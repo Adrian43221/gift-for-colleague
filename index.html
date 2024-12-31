@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>С Днем Рождения!</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>С Новым Годом и Днём Рождения!</h1>
+			<p>Поздравляю тебя с этим особенным праздником!</p>
+
+			<!-- Снег -->
+			<div class="snowflakes">
+				<div class="snowflake">❄</div>
+				<div class="snowflake">❅</div>
+				<div class="snowflake">❆</div>
+			</div>
+
+			<!-- Кнопки -->
+			<button id="btn-surprise">Сюрприз!</button>
+			<button id="music-toggle">Включить музыку</button>
+
+			<!-- Сообщение -->
+			<!-- Добавляем контейнер для фото -->
+			<div id="photo-container" class="hidden">
+				<img src="images/Andrew.jpg" alt="Фото Андрея" />
+			</div>
+			<p id="message">
+				Сегодня твой день! Поздравляю с Новым 2025 годом и, конечно же, с Днём
+				Рождения! 🎉 Желаю счастья, крепкого здоровья и больших успехов в
+				наступающем году! Я искренне рад, что познакомился с тобой. Несмотря на
+				разницу в возрасте, мы нашли общий язык, ведь дело не в годах, а в душе
+				и стремлениях. От всего сердца поздравляю с этим праздником! Пусть в
+				этом году сбудутся все твои планы, ты добьёшься поставленных целей и
+				получишь первый оффер в сфере IT. И, конечно же, желаю, чтобы компилятор
+				всегда запускался без ошибок! 😄 С праздником! 🎂🎁
+			</p>
+
+			<!-- Фоновая музыка -->
+			<iframe
+				id="bg-music"
+				width="0"
+				height="0"
+				src="https://www.youtube.com/embed/KhqNTjbQ71A?autoplay=0&loop=1&playlist=KhqNTjbQ71A"
+				frameborder="0"
+				allow="autoplay"
+				allowfullscreen
+			></iframe>
+		</div>
+
+		<!-- Санта с оленями -->
+		<div class="santa hidden">
+			<img src="images/santa.png" alt="Летающий Санта" id="flying-santa" />
+		</div>
+
+		<audio id="santa-sound" src="audio/хохохо.mp3"></audio>
+		<div id="fireworks-container"></div>
+
+		<script src="main.js"></script>
+	</body>
+</html>

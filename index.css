@@ -1,0 +1,346 @@
+/* Общие стили */
+body {
+	font-family: 'Archivo Black', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	background-image: url('images/14.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	text-align: center;
+}
+
+.container {
+	position: relative;
+	z-index: 1;
+	color: white;
+	text-align: center;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+	font-size: 3rem;
+	margin-bottom: 20px;
+	color: #ff4d4d;
+	animation: glow 2s infinite alternate;
+}
+
+p {
+	font-size: 1.5rem;
+	color: #ffd700;
+	animation: fadeIn 3s ease-in-out;
+}
+
+button {
+	padding: 10px 20px;
+	margin-top: 20px;
+	font-size: 1.2rem;
+	background-color: #cc0000;
+	border: none;
+	color: white;
+	cursor: pointer;
+	transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+	transform: scale(1.1);
+}
+
+button:active {
+	background-color: #ff0000;
+}
+
+#message {
+	display: none;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+	margin-top: 20px;
+}
+
+#message.show {
+	display: block;
+	opacity: 1;
+}
+
+/* Контейнер для фото */
+#photo-container {
+	display: none;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#photo-container img {
+	width: 300px;
+	height: auto;
+	border-radius: 15px;
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#photo-container.show {
+	display: block;
+	opacity: 1;
+	transform: scale(1.1);
+}
+
+/* Летающий Санта */
+.santa {
+	position: absolute;
+	width: 300px;
+	height: auto;
+	top: 10%;
+	left: -300px;
+	pointer-events: none;
+	z-index: 1000;
+	animation: flySanta 15s linear infinite;
+}
+
+@keyframes flySanta {
+	0% {
+		left: -300px;
+		top: 10%;
+		transform: rotate(0deg) scale(1);
+	}
+	25% {
+		left: 25%;
+		top: 20%;
+		transform: rotate(-10deg) scale(1.1);
+	}
+	50% {
+		left: 50%;
+		top: 15%;
+		transform: rotate(10deg) scale(1.2);
+	}
+	75% {
+		left: 75%;
+		top: 5%;
+		transform: rotate(-5deg) scale(1.1);
+	}
+	100% {
+		left: 110%;
+		top: 20%;
+		transform: rotate(0deg) scale(1);
+	}
+}
+
+.santa.hidden {
+	animation: none; /* Убираем анимацию, пока не будет нажата кнопка */
+}
+
+/* Снег */
+.snowflakes {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 2;
+}
+
+.snowflake {
+	position: absolute;
+	top: -10px;
+	color: white;
+	font-size: 1.5rem;
+	animation: fall 10s linear infinite;
+	opacity: 0.8;
+}
+
+.snowflake:nth-child(2) {
+	left: 20%;
+	font-size: 1.8rem;
+	animation-duration: 12s;
+}
+
+.snowflake:nth-child(3) {
+	left: 50%;
+	font-size: 2rem;
+	animation-duration: 8s;
+}
+
+.snowflake:nth-child(4) {
+	left: 80%;
+	font-size: 1.6rem;
+	animation-duration: 11s;
+}
+
+@keyframes fall {
+	0% {
+		transform: translateY(0) rotate(0);
+	}
+	100% {
+		transform: translateY(100vh) rotate(360deg);
+	}
+}
+
+@keyframes glow {
+	from {
+		text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d;
+	}
+	to {
+		text-shadow: 0 0 20px #ffcccb, 0 0 30px #ffcccb, 0 0 40px #ffcccb;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+	h1 {
+		font-size: 2rem;
+	}
+	p {
+		font-size: 1.2rem;
+	}
+	button {
+		font-size: 1rem;
+		padding: 8px 16px;
+	}
+	.santa {
+		width: 200px;
+	}
+}
+
+#fireworks-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.firework {
+	position: absolute;
+	width: 10px; 
+	height: 10px;
+	background-color: yellow;
+	border-radius: 50%; /* Сначала круглые */
+	animation: explode 5s ease-out forwards; 
+	transform-origin: center;
+}
+
+/* Увеличим продолжительность анимации фейерверков */
+@keyframes explode {
+	0% {
+		transform: scale(1) rotate(0deg);
+		opacity: 1;
+	}
+	25% {
+		transform: scale(3) rotate(45deg);
+		clip-path: polygon(
+			50% 0%,
+			61% 35%,
+			98% 35%,
+			68% 57%,
+			79% 91%,
+			50% 70%,
+			21% 91%,
+			32% 57%,
+			2% 35%,
+			39% 35%
+		);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(5) rotate(90deg);
+		clip-path: polygon(
+			50% 0%,
+			61% 35%,
+			98% 35%,
+			68% 57%,
+			79% 91%,
+			50% 70%,
+			21% 91%,
+			32% 57%,
+			2% 35%,
+			39% 35%
+		);
+		opacity: 0.8;
+	}
+	75% {
+		transform: scale(7) rotate(135deg);
+		clip-path: polygon(
+			50% 0%,
+			61% 35%,
+			98% 35%,
+			68% 57%,
+			79% 91%,
+			50% 70%,
+			21% 91%,
+			32% 57%,
+			2% 35%,
+			39% 35%
+		);
+		opacity: 0.6;
+	}
+	100% {
+		transform: scale(10) rotate(180deg);
+		clip-path: polygon(
+			50% 0%,
+			61% 35%,
+			98% 35%,
+			68% 57%,
+			79% 91%,
+			50% 70%,
+			21% 91%,
+			32% 57%,
+			2% 35%,
+			39% 35%
+		);
+		opacity: 0;
+	}
+}
+
+/* Изменим параметры размеров фейерверков */
+.firework {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	background-color: yellow;
+	border-radius: 50%;
+	animation: explode 6s ease-out forwards; /* Увеличена продолжительность до 6 секунд */
+	transform-origin: center;
+}
+
+.firework:nth-child(odd) {
+	background-color: #ff4500;
+}
+
+.firework:nth-child(even) {
+	background-color: #800080;
+}
+
+.firework.star {
+	clip-path: polygon(
+		50% 0%,
+		61% 35%,
+		98% 35%,
+		68% 57%,
+		79% 91%,
+		50% 70%,
+		21% 91%,
+		32% 57%,
+		2% 35%,
+		39% 35%
+	);
+}
+
+.firework.square {
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Прямоугольник */
+}
